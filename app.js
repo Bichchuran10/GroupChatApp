@@ -13,12 +13,14 @@ const User=require('./models/User')
 const userRouter=require('./routes/user')
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ extended: false }));
 
 
 app.use('/user',userRouter)
 
-sequelize.sync({force:true})
+sequelize.
+//sync({force:true})
+sync()
 .then(()=>{
     app.listen(3000)
 })

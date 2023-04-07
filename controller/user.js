@@ -73,49 +73,85 @@ exports.signup=async(req,res,next)=>{
     }
 }
 
-exports.login=async(req,res,next)=>{
+// exports.login=async(req,res,next)=>{
 
-    try{
-        const {email,password}=req.body
+//     try{
+//         const {email,password}=req.body
 
-        if(isStringInvalid(email)|| isStringInvalid(password))
-        {
-            return res.status(400).json({error:"All fields are required"})
-        }
-            const user=await User.findOne({where :{email:email}})
-
-            if(!user) {
-                return res.status(404).json({message: 'user does not exist'});
-            }
-            bcrypt.compare(password,user[0].password,(error,result)=>{
-            if(error)
-            {
-                return res.status(500).json({success: false, message:"Something went wrong"})
-            }
-            if(result==true)
-            {
-            res.status(200).json({
-                success:true,
-                message:"user logged in successfully",
-                token:generateToken(user[0].id,user[0].name)
-            }) 
-            }
-        else {
-            res.status(401).json({success: false, message: 'password is incorrect'});
-        }
-    });
+//         if(isStringInvalid(email)|| isStringInvalid(password))
+//         {
+//             return res.status(400).json({error:"All fields are required"})
+//         }
+//             const user=await User.findAll({where :{email:email}})
+//         console.log("here is your user",user)
+//             if(!user) {
+//                 return res.status(404).json({message: 'user does not exist'});
+//             }
+//             bcrypt.compare(password,user[0].password,(error,result)=>{
+//                 console.log("password known by db",user[0].password)
+//                 console.log("password known by user",password)
+//                 console.log(result)
+//             if(error)
+//             {
+//                 throw new Error
+//             }
+//             if(result==true)
+//             {
+//             res.status(200).json({
+//                 success:true,
+//                 message:"user logged in successfully",
+//                 token:generateToken(user[0].id,user[0].name)
+//             }) 
+//             }
+//         else {
+//             res.status(401).json({success: false, message: 'password is incorrect'});
+//         }
+//     });
     
-    }
-    catch(err)
-    {
-        res.status(500).json({
-            success:false,
-            message:err
-        })
-    }
-} 
+//     }
+//     catch(err)
+//     {
+//         res.status(500).json({
+//             success:false,
+//             message:err
+//         })
+//     }
+// } 
+
+exports.login= async (req,res,next)=>{
+    try{
+         const {email,password }=req.body
+        if(isStringInvalid(email) || isStringInvalid(password)){
+          return res.status(400).json({error:"All fields are required"})
+          }
+        const user=await User.findAll({where : {email}})
+        if(user.length>0){
+            bcrypt.compare(password,user[0].password,(err,result)=>{
+             if(err){
+               res.status(500).json({  message:"something went wrong"})
+             }
+             else if(result===true){
+             res.status(200).json({ success: true, message:"user logged successfully",token:generateToken(user[0].id,user[0].name)})
+             }
+     
+             else{
+             res.status(401).json({ success: false, message:"incorrect password"})
+                }
+             }
+           )}
+        else{
+          res.status(404).json({success:false, message: "User not found"})
+        }
+       
+       }
+       catch(err){
+       res.status(500).json({message: err, success:false})
+     }
+}
   
 
 function generateToken(id,name){
+    console.log("executed successfully",id,name)
+    console.log(process.env.TOKEN_SECRET)
     return jwt.sign({userid:id,name:name},process.env.TOKEN_SECRET)
 }
