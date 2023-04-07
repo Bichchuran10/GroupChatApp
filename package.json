@@ -1,0 +1,28 @@
+{
+  "name": "groupchatapp_final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bichchuran10/GroupChatApp.git"
+  },
+  "author": "Bichchuran Changmai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bichchuran10/GroupChatApp/issues"
+  },
+  "homepage": "https://github.com/Bichchuran10/GroupChatApp#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^3.2.0",
+    "sequelize": "^6.30.0"
+  }
+}
