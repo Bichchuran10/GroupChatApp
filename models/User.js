@@ -10,6 +10,10 @@ const User=sequelize.define('user',{
         autoIncrement:true,
         allowNull:false,
     },
+    name:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
     email:{
         type:Sequelize.STRING,
         allowNull:false,

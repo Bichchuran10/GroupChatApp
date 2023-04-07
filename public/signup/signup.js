@@ -13,10 +13,19 @@ const signup=async(event)=>{
         password
     }
 
-    let response=axios.post(`http://localhost:3000/user/signup`,user)
+    let response=await axios.post(`http://localhost:3000/user/signup`,user)
+    console.log(response)
+    if(response.status === 201) {
+        alert(response.data.message)
+        window.location.href ='../Login/login.html'
+        }
     }
     catch (error) {
         console.log(error);
-        document.getElementById('error-text').innerHTML += `${error}`;
+        if(error.status === 401){
+            alert('User already exists. Please Login.');
+        }
+        document.getElementById('error').innerHTML+= `${error.data.message}`;
+        
     }
 }

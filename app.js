@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const bodyParser=require('body-parser')
 const sequelize=require('./util/database')
+const cors=require('cors')
 
 //models
 const User=require('./models/User')
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use('/user',userRouter)
 
-sequelize.sync()
+sequelize.sync({force:true})
 .then(()=>{
     app.listen(3000)
 })

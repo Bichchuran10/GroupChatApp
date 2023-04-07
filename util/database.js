@@ -5,4 +5,6 @@ const sequelize=new Sequelize(process.env.DB_name,process.env.DB_username,proces
     host:process.env.DB_host
 })
 
+console.log(process.env.DB_name,process.env.DB_username,process.env.DB_password,process.env.DB_host)
+
 module.exports=sequelize;
