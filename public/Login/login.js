@@ -12,7 +12,8 @@ const login=async(event)=>
 
     let response=await axios.post('http://localhost:3000/user/login',loginDetails)
     if(response.status==200){   
-        alert('User login successfull') 
+        alert('User login successful') 
+        localStorage.setItem('token',res.data.token)
     }
 }
     catch(err)

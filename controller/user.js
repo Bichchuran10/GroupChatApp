@@ -1,5 +1,6 @@
 const User=require('../models/User')
 const bcrypt=require('bcrypt')
+const jwt=require('jsonwebtoken')
 
 
 exports.signup=async(req,res,next)=>{
@@ -70,4 +71,51 @@ exports.signup=async(req,res,next)=>{
     {
         return false
     }
+}
+
+exports.login=async(req,res,next)=>{
+
+    try{
+        const {email,password}=req.body
+
+        if(isStringInvalid(email)|| isStringInvalid(password))
+        {
+            return res.status(400).json({error:"All fields are required"})
+        }
+            const user=await User.findOne({where :{email:email}})
+
+            if(!user) {
+                return res.status(404).json({message: 'user does not exist'});
+            }
+            bcrypt.compare(password,user[0].password,(error,result)=>{
+            if(error)
+            {
+                return res.status(500).json({success: false, message:"Something went wrong"})
+            }
+            if(result==true)
+            {
+            res.status(200).json({
+                success:true,
+                message:"user logged in successfully",
+                token:generateToken(user[0].id,user[0].name)
+            }) 
+            }
+        else {
+            res.status(401).json({success: false, message: 'password is incorrect'});
+        }
+    });
+    
+    }
+    catch(err)
+    {
+        res.status(500).json({
+            success:false,
+            message:err
+        })
+    }
+} 
+  
+
+function generateToken(id,name){
+    return jwt.sign({userid:id,name:name},process.env.TOKEN_SECRET)
 }
