@@ -15,12 +15,22 @@ exports.saveMessage=async(req,res,next)=>{
         
     }
     catch(err){
-        console.log(error);
+        console.log(err);
         res.status(500).json({message: 'something went wrong'});
     }
 }
 
-
+exports.fetchMessage=async(req,res,next)=>{
+    try{
+        const messages=await Message.findAll()
+        res.status(200).json({message: messages});
+      } 
+    catch (error) {
+        console.log(error);
+        res.status(500).json({message: 'could not fetch messages'});
+    }
+}
+  
 
 
 
