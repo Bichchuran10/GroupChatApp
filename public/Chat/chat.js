@@ -13,6 +13,7 @@ document.getElementById('chat-form').onsubmit = async (event) => {
                 'Authorization': token
             }
         });
+        document.getElementById('message').value = '';
 
     } catch (error) {
         console.log('error while sending msg', error);
@@ -21,9 +22,12 @@ document.getElementById('chat-form').onsubmit = async (event) => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
+       
         setInterval(() => {
             fetchMessages();
         }, 1000);  
+
+        
     } 
     catch (error) {
         console.log(error);
@@ -33,11 +37,40 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 const fetchMessages=async()=>{
 
-    const res = await axios.get('http://localhost:3000/message/fetch');
-    console.log("dataaaaaa",res.data)
-    const messages = res.data.message;
-    showChat(messages);
+    try{
 
+        let oldMessages = JSON.parse(localStorage.getItem('messages'));
+        let lastMsgId;
+        if(!oldMessages) {
+            console.log('no old messages');
+            oldMessages = [];
+            lastMsgId = 0;
+        }
+        else
+        {
+           // messages = oldMessages;
+            lastMsgId = oldMessages[oldMessages.length - 1].id;
+        }
+        console.log('last msg id', lastMsgId);
+
+        const res = await axios.get(`http://localhost:3000/message/fetch?lastMsgId=${lastMsgId}`);
+        console.log("dataaaaaa",res.data)
+
+        if(res.status === 200){
+            const newMessages = res.data.message;
+            let messages = oldMessages.concat(newMessages);
+            if(messages.length > 10){
+                messages = messages.slice(messages.length - 10, messages.length);
+            }
+            console.log('here is your messages',messages)
+            localStorage.setItem('messages', JSON.stringify(messages));
+            showChat(messages);
+        }    
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
 }
 
 function showChat(messages)
