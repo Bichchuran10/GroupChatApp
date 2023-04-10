@@ -12,7 +12,7 @@
       }
 
       /* Style for the chat input box */
-      .chat-input {
+      .message {
         width: 400px;
         height: 50px;
         border: 1px solid black;
@@ -24,8 +24,10 @@
     <div class="chat-box" id="chat-box">
       <!-- Chat messages will be displayed here -->
     </div>
-    <textarea class="chat-input" id="chat-input" placeholder="Type your message here..."></textarea>
-    <button onclick="sendMessage()">Send</button>
+    <form id="chat-form">
+        <input type="text" id="message" placeholder="Type your message here">
+        <button type="submit">Send</button>
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.4.1/axios.min.js"></script>
     <script src ="./chat.js"></script>
   </body>

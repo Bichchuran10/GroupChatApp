@@ -8,15 +8,23 @@ const cors=require('cors')
 
 //models
 const User=require('./models/User')
+const Message=require('./models/Message')
+
+//association
+User.hasMany(Message)
+Message.belongsTo(User)
 
 //routers
 const userRouter=require('./routes/user')
+const messageRouter=require('./routes/message')
+
 
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 
 
 app.use('/user',userRouter)
+app.use('/message',messageRouter)
 
 sequelize.
 //sync({force:true})
