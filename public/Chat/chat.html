@@ -12,7 +12,7 @@
       }
 
       /* Style for the chat input box */
-      .message {
+      #chat-form {
         width: 400px;
         height: 50px;
         border: 1px solid black;
@@ -21,9 +21,10 @@
     </style>
   </head>
   <body>
-    <div class="chat-box" id="chat-box">
+    <div class="chat-box" id="chat-body">
       <!-- Chat messages will be displayed here -->
     </div>
+    
     <form id="chat-form">
         <input type="text" id="message" placeholder="Type your message here">
         <button type="submit">Send</button>
