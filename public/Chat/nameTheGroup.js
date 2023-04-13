@@ -5,7 +5,7 @@ document.getElementById('group-name-form').onsubmit = async (e) => {
         const groupname = document.getElementById('groupname');
         const token = localStorage.getItem('token');
         const res = await axios.post('http://localhost:3000/chat/nameTheGroup', 
-            {groupname: groupname.value, groupid: localStorage.getItem('createdGroupId')},
+            {groupname: groupname.value, groupid: sessionStorage.getItem('createdGroupId')},
             {
                 headers: {
                     'Authorization': token

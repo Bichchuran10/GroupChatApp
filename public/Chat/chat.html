@@ -2,25 +2,12 @@
 <html>
   <head>
     <title>Chat Application</title>
-    <style>
-      /* Style for the chat box */
-      .chat-box {
-        width: 400px;
-        height: 500px;
-        border: 1px solid black;
-        overflow: auto;
-      }
-
-      /* Style for the chat input box */
-      #chat-form {
-        width: 400px;
-        height: 50px;
-        border: 1px solid black;
-        resize: none;
-      }
-    </style>
+    <link rel="stylesheet" href="./chat.css">
   </head>
   <body>
+    <header>
+      <h2>Chat App</h2>
+  </header>
     <div id="group-body">
       <div id="group-header">
           <button id="new-group-btn">New group</button>
@@ -30,16 +17,33 @@
 
       </div>
   </div>
-    <div class="chat-box" id="chat-body">
+
+    <div class="container" id="chat-body">
       <!-- Chat messages will be displayed here -->
+      <div id="open-chat">
+
+      </div>
+      <div class="hide">Click to see members</div>
+      <div id="chat-ul">
+
+      </div>
+  </div>
+  <div id="members-list">
+      <button id="close-members-btn">X</button>
+      <ul id="members-ul">
+
+      </ul>
     </div>
     
-    
+    <footer>
+      <div id="form-div">
     <form id="chat-form">
         <input type="text" id="message" placeholder="Type your message here">
         <button type="submit">Send</button>
     </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.4.1/axios.min.js"></script>
-    <script src ="./chat.js"></script>
+    </div>
+  </footer>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.4.1/axios.min.js"></script>
+  <script src ="./chat.js"></script>
 </html>

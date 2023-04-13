@@ -8,5 +8,6 @@ const userAuthentication=require('../middleware/auth')
 router.post('/addParticipant', userAuthentication.authenticate, chatController.addParticipant);
 router.post('/nameTheGroup', userAuthentication.authenticate, chatController.setGroupName);
 router.get('/getGroups', userAuthentication.authenticate, chatController.getGroups);
+router.get('/getMembers', userAuthentication.authenticate, chatController.getMembers);
 
 module.exports = router;

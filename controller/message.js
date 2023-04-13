@@ -1,6 +1,6 @@
 const Message=require('../models/Message');
-//const Group = require('../models/Group');
-//const GroupUser = require('../models/GroupUser');
+const Group = require('../models/Group');
+const GroupUser = require('../models/GroupUser');
 const { Op } = require('sequelize');
 
 exports.saveMessage=async(req,res,next)=>{
@@ -44,7 +44,11 @@ exports.fetchMessage=async(req,res,next)=>{
                 id: {[Op.gt]: lastMsgId}
             }
         })
-        res.status(200).json({message: messages});
+        if(messages.length > 0) {
+            res.status(200).json({messages: messages});
+        } else {
+            res.status(201).json({message: 'no new messages'});
+        }
       } 
     catch (error) {
         console.log(error);
