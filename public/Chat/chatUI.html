@@ -1,10 +1,11 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Group Name</title>
+	<title>Chat App</title>
+	<link rel="stylesheet" type="text/css" href="./chatUI.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <style>
 		.navbar {
 			background-color: #343a40;
@@ -56,15 +57,41 @@
 			</ul>
 		</div>
 	</nav>
-    <form id="group-name-form">
-        <label for="groupname">Enter group name</label>
-        <input type="text" id="groupname">
-        <button type="submit">Submit</button>
-    </form>
+
+    <div class="container">
+		<div class="users">
+			<ul class="user-list" id="userList">
+                List of Users:
+				</ul>
+			</div>
+
+            <div class="chat">
+                <div class="chat-header">
+                    <div id="imgUpdate" class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <h4 id="currentTextingPerson" class="chat-name"></h4>
+                        <p class="chat-status"></p>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    chats
+                    <ul class="message-list" id="allMessages">
+
+                    </ul>
+                    
+                </div>
+               
+                <div class="chat-input">
+                    <input id="sentMessage" type="text" placeholder="Type your message...">
+                    <button onclick="sentMessageFunction()">Send</button>
+                </div>
+            </div>
+        </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
-<script src="nameTheGroup.js"></script>
+<script src="./chatUI.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.4.1/axios.min.js"></script>
 </html>

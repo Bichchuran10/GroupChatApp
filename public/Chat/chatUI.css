@@ -1,0 +1,309 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+.container {
+	display: flex;
+	height: 100vh;
+}
+
+.users {
+	flex: 1;
+	background-color: #f8f8f8;
+	overflow-y: scroll;
+}
+
+.user-list {
+	list-style-type: none;
+}
+
+.user {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	cursor: pointer;
+}
+
+.user.active {
+	background-color: #e6f2ff;
+}
+
+.user-avatar {
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.user-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.user-info {
+	flex: 1;
+}
+
+.user-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.user-status {
+	font-size: 14px;
+	color: #999;
+}
+
+.chat {
+	flex: 3;
+	display: flex;
+	flex-direction: column;
+}
+
+.chat-header {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	background-color: #f8f8f8;
+}
+
+.chat-avatar {
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.chat-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.chat-info {
+	flex: 1;
+}
+
+.chat-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.chat-status {
+	font-size: 14px;
+	color: #999;
+}
+
+.chat-messages {
+	flex: 1;
+	padding: 20px;
+	background-color: #fff;
+	overflow-y: scroll;
+}
+
+.message-list {
+	list-style-type: none;
+}
+
+.message {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.message-text {
+	max-width: 70%;
+	padding: 10px;
+	background-color: #e6e6e6;
+	border-radius: 20px;
+	word-wrap: break-word;
+	margin-bottom: 5px;
+}
+
+.received .message-text {
+	align-self: flex-start;
+}
+
+.sent .message-text {
+	align-self: flex-end;
+	background-color: #dcf8c6;
+}
+
+.message-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.message-time {
+	font-size: 12px;
+	color: #999;
+	margin-left: 10px;
+}
+
+.message-time-right {
+	font-size: 12px;
+	color: #999;
+	margin-left: auto;
+	margin-right: 10px;
+}
+
+
+.message-sender-left {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-start;
+	font-size: 12px;
+	color: #999;
+	margin-bottom: 5px;
+}
+
+.message-sender-right {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-end;
+	font-size: 12px;
+	color: #999;
+	margin-bottom: 5px;
+}
+
+.message-sender-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.chat-input {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+	background-color: #f8f8f8;
+}
+
+.chat-input input {
+	flex: 1;
+	padding: 10px;
+	border: none;
+	border-radius: 20px;
+	margin-right: 10px;
+	font-size: 16px;
+}
+
+.chat-input button {
+	padding: 10px 20px;
+	background-color: #128C7E;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.chat-input button:hover {
+	background-color: #0E6655;
+}
+
+
+
+.users {
+	flex: 1;
+	background-color: #f8f8f8;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#createGroupButton {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+#addMembersButton {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	margin-top: 20px;
+	}
+	
+	/* Button for removing existing members */
+	#removeMembersButton {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	margin-top: 20px;
+	}
+	
+	/* Button for promoting members to admin status */
+	#makeAdminButton {
+	background-color: #0db0c6;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	margin-top: 20px;
+	}
+
+.group-list {
+	list-style-type: none;
+}
+
+.group {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	cursor: pointer;
+}
+
+.group.active {
+	background-color: #e6f2ff;
+}
+
+.group-avatar {
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.group-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.group-info {
+	flex: 1;
+}
+
+.group-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.group-status {
+	font-size: 14px;
+	color: #999;
+}

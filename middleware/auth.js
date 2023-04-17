@@ -4,7 +4,7 @@ const User=require('../models/User')
 exports.authenticate=(req,res,next)=>{
     try{
         const token=req.header('Authorization');
-        console.log(token) ///check if we are getting the token
+        console.log("the token",token) ///check if we are getting the token
         const user=jwt.verify(token,process.env.TOKEN_SECRET);
         User.findByPk(user.userid).then(user=>{
             console.log(JSON.stringify(user));

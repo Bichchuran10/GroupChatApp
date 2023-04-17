@@ -9,12 +9,17 @@ const cors=require('cors')
 //models
 const User=require('./models/User')
 const Message=require('./models/Message')
+const OneToOne=require('./models/OneToOne')
 const Group = require('./models/Group');
 const GroupUser = require('./models/GroupUser');
+
 
 //association
 User.hasMany(Message)
 Message.belongsTo(User)
+
+User.hasMany(OneToOne)
+OneToOne.belongsTo(User)
 
 Group.belongsToMany(User, {through: GroupUser});
 User.belongsToMany(Group, {through: GroupUser});
@@ -28,6 +33,7 @@ const messageRouter=require('./routes/message')
 const chatRouter = require('./routes/chat');
 const adminRouter = require('./routes/admin');
 
+
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 
@@ -36,6 +42,7 @@ app.use('/user',userRouter)
 app.use('/message',messageRouter)
 app.use('/chat', chatRouter)
 app.use('/admin', adminRouter);
+
 
 
 sequelize.

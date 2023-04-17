@@ -73,7 +73,9 @@ exports.getMembers = async (req, res, next) => {
 
 exports.getGroups = async (req, res, next) => {
     try {
+        console.log("reqqqqq user",req.user)
         const groups = await req.user.getGroups();
+        console.log('groups are',groups)
         if(groups.length === 0) {
             return res.status(201).json({message: 'no groups currently'});
         }

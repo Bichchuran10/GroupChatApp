@@ -18,7 +18,7 @@ const login=async(event)=>
         localStorage.setItem('token',response.data.token)
         email.value ="";
         password.value ="";
-        window.location.href="../Chat/chat.html"
+        window.location.href="../Chat/nav.html"
     }
 }
     catch(err)

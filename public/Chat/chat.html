@@ -2,48 +2,112 @@
 <html>
   <head>
     <title>Chat Application</title>
+    <!-- Add Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./chat.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      .navbar {
+        background-color: #343a40;
+        padding: 15px;
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+  
+      .navbar-brand {
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+  
+      .nav-link {
+        color: #fff !important;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 15px;
+      }
+  
+      .nav-link:hover {
+        color: #ffc107 !important;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h2>Chat App</h2>
-  </header>
-    <div id="group-body">
-      <div id="group-header">
-          <button id="new-group-btn">New group</button>
-          <!-- <button id="new-chat-btn">New chat</button> -->
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">Group Chat Application</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./chatUI.html">Chats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./chat.html">Groups</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Payments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+        </ul>
       </div>
-      <div id="chat-list">
-
+    </nav>
+    <header class="bg-white p-3 shadow">
+      <h2 class="mb-0">Chat App</h2>
+    </header>
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between">
+        <div>
+          <button class="btn btn-primary mr-2" id="new-group-btn">New group</button>
+        </div>
       </div>
-  </div>
-
-    <div class="container" id="chat-body">
-      <!-- Chat messages will be displayed here -->
-      <div id="open-chat">
-
+      <div class="row">
+        <div class="col-md-4">
+          <div class="bg-white shadow-sm rounded p-3">
+            <h5 class="mb-3">Chats</h5>
+            <div id="chat-list">
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="bg-white shadow-sm rounded p-3">
+            <div id="open-chat">
+              
+            </div>
+            <div class="hide mb-2">Click to see members</div>
+            <ul id="chat-ul" class="list-unstyled">
+              
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="hide">Click to see members</div>
-      <div id="chat-ul">
-
-      </div>
-  </div>
-  <div id="members-list">
-      <button id="close-members-btn">X</button>
-      <ul id="members-ul">
-
+    </div>
+    <div id="members-list" class="bg-white shadow-sm rounded p-3">
+      <button type="button" class="close" id="close-members-btn">&times;</button>
+      <ul id="members-ul" class="list-unstyled">
+        
       </ul>
     </div>
-    
-    <footer>
+    <footer class="fixed-bottom bg-white p-3 shadow">
       <div id="form-div">
-    <form id="chat-form">
-        <input type="text" id="message" placeholder="Type your message here">
-        <button type="submit">Send</button>
-    </form>
-    </div>
-  </footer>
+        <form id="chat-form" class="d-flex">
+          <input type="text" id="message" class="form-control mr-2" placeholder="Type your message here">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </footer>
   </body>
+  <!-- Add Bootstrap and Axios scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.4.1/axios.min.js"></script>
-  <script src ="./chat.js"></script>
+  <script src="./chat.js"></script>
+  <script id="replace_with_navbar" src="./nav.js"></script>
 </html>
